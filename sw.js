@@ -86,6 +86,7 @@ self.addEventListener('push', e => {
     e.waitUntil( self.registration.showNotification(title, options) )
 })
 
+
 self.addEventListener('notificationclick', e => {
   console.log(e)
 
