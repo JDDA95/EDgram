@@ -1,4 +1,4 @@
-const CACHE_NAME = 'edgram-cache-v1',
+const CACHE_NAME = 'V1',
   urlsToCache = [
     './',
     './?utm=homescreen',
@@ -7,7 +7,7 @@ const CACHE_NAME = 'edgram-cache-v1',
     './style.css',
     './script.js',
     './favicon.ico',
-    './assets/img/edgram-logo.png',
+    './assets/img/edgram-logo-black.png',
     './icon_192x192.png',
     'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'
   ]
@@ -17,9 +17,11 @@ self.addEventListener('install', e => {
   e.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => {
+        console.log(cache)
         console.log('Archivos en cache')
         return cache.addAll(urlsToCache)
         .then( () => self.skipWaiting() )
+        .catch(err => console.log('Fallo SW'))
         //skipWaiting forza al SW a activarse
       })
       .catch(err => console.log('Falló registro de cache', err) )
